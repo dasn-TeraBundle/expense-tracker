@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: expense-service
+  cloud:
+    config:
+      uri: http://locakhost:8888
+
+server:
+  port: 8011
+  servlet:
+    context-path: /${spring.application.name}/

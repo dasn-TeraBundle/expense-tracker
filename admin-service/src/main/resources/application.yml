@@ -4,17 +4,11 @@ spring:
   cloud:
     config:
       uri: http://locakhost:8888
-#  cache:
-#    jcache:
-#      config: ehcache.xml
 
 server:
   port: 8001
   servlet:
     context-path: /${spring.application.name}/
-  error:
-    include-stacktrace: never
-
 
 management:
   security:

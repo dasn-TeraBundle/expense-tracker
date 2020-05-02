@@ -13,7 +13,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
@@ -22,9 +21,6 @@ public class CategoryServiceImpl implements CategoryService {
     private static final Logger LOGGER = LoggerFactory.getLogger(CategoryServiceImpl.class);
 
     private CategoryRepository categoryRepository;
-
-    @Resource
-    private CategoryService self;
 
     @Autowired
     public CategoryServiceImpl(CategoryRepository categoryRepository) {

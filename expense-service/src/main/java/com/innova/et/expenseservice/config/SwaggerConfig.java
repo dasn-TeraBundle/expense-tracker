@@ -1,4 +1,4 @@
-package com.innova.et.adminservice.config;
+package com.innova.et.expenseservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
