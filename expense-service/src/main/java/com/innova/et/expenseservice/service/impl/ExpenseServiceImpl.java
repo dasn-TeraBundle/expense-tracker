@@ -1,8 +1,10 @@
 package com.innova.et.expenseservice.service.impl;
 
 import com.innova.et.expenseservice.beans.Expense;
+import com.innova.et.expenseservice.feign.CategoryClient;
 import com.innova.et.expenseservice.repository.ExpenseRepository;
 import com.innova.et.expenseservice.service.ExpenseService;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +14,23 @@ import java.util.List;
 public class ExpenseServiceImpl implements ExpenseService {
 
     private ExpenseRepository expenseRepository;
+    private CategoryClient categoryClient;
 
     @Autowired
-    public ExpenseServiceImpl(ExpenseRepository expenseRepository) {
+    public ExpenseServiceImpl(ExpenseRepository expenseRepository, CategoryClient categoryClient) {
         this.expenseRepository = expenseRepository;
+        this.categoryClient = categoryClient;
     }
 
     @Override
     public Expense create(Expense expense) {
+        try {
+            System.out.println(categoryClient.getById(expense.getCategory()));
+        } catch (FeignException ex) {
+            if (ex.status() == 404)
+                throw new IllegalArgumentException("Invalid category");
+            else throw ex;
+        }
         return expenseRepository.save(expense);
     }
 
