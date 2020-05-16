@@ -1,4 +1,4 @@
-package com.innova.et.expenseservice.repository;
+package com.innova.et.expenseservice.dao.repository;
 
 import com.innova.et.expenseservice.beans.Payment;
 import org.springframework.data.mongodb.repository.MongoRepository;

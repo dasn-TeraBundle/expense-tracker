@@ -1,7 +1,7 @@
 package com.innova.et.expenseservice.service.impl;
 
 import com.innova.et.expenseservice.beans.Payment;
-import com.innova.et.expenseservice.repository.PaymentRepository;
+import com.innova.et.expenseservice.dao.repository.PaymentRepository;
 import com.innova.et.expenseservice.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
