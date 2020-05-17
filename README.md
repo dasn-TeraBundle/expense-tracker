@@ -31,6 +31,16 @@ It is made up of multiple services listed below
 ## RUN
 
 ### BUILD
+
+Run the following command to build and package the application
 ```
 mvn clean package
 ```
+
+Run the following command to build docker imagres from packaged jars from previous step.
+```
+build-images
+```
+## CONTRIBUTIONS
+
+* Nirupam Das
