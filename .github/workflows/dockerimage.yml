@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ master, DEV ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -22,3 +22,9 @@ jobs:
       run: mvn -B package -DskipTests=true --file pom.xml
     - name: Build the Eureka Docker image
       run: docker build --file eureka/Dockerfile --tag eureka:$(date +%s) eureka
+    - name: Build the ConfigServer Docker image
+      run: docker build --file config-server/Dockerfile --tag config-server:$(date +%s) eureka
+    - name: Build the AdminService Docker image
+      run: docker build --file admin-service/Dockerfile --tag admin-service:$(date +%s) eureka
+    - name: Build the ExpenseService Docker image
+      run: docker build --file expense-service/Dockerfile --tag expense-service:$(date +%s) eureka
