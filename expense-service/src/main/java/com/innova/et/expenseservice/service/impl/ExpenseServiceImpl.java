@@ -1,14 +1,14 @@
 package com.innova.et.expenseservice.service.impl;
 
-import com.innova.et.expenseservice.beans.Expense;
 import com.innova.et.expenseservice.dao.ExpenseDao;
 import com.innova.et.expenseservice.feign.CategoryClient;
 import com.innova.et.expenseservice.service.ExpenseService;
-import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.innova.et.expenseservice.dto.ExpenseDto.*;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
@@ -23,7 +23,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public Expense create(Expense expense) {
+    public ExpenseDtoResponse create(ExpenseDtoRequest expense) {
 //        try {
 //            System.out.println(categoryClient.getById(expense.getCategory()));
 //        } catch (FeignException ex) {
@@ -31,22 +31,22 @@ public class ExpenseServiceImpl implements ExpenseService {
 //                throw new IllegalArgumentException("Invalid category");
 //            else throw ex;
 //        }
-        return expenseDao.create(expense);
+        return convert(expenseDao.create(convert(expense)));
     }
 
     @Override
-    public Expense findById(String s) {
+    public ExpenseDtoResponse findById(String s) {
         return null;
     }
 
     @Override
-    public List<Expense> findAll() {
+    public List<ExpenseDtoResponse> findAll() {
 //        new Sort(Sort.Direction.ASC, Arrays.asList("date"))
-        return expenseDao.findAll();
+        return convert(expenseDao.findAll());
     }
 
     @Override
-    public Expense update(String s, Expense item) {
+    public ExpenseDtoResponse update(String s, ExpenseDtoRequest item) {
         return null;
     }
 
@@ -56,7 +56,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public void remove(Expense item) {
+    public void remove(ExpenseDtoRequest item) {
 
     }
 

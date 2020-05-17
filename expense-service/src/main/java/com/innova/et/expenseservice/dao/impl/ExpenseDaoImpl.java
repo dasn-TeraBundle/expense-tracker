@@ -1,6 +1,7 @@
-package com.innova.et.expenseservice.dao;
+package com.innova.et.expenseservice.dao.impl;
 
 import com.innova.et.expenseservice.beans.Expense;
+import com.innova.et.expenseservice.dao.ExpenseDao;
 import com.innova.et.expenseservice.dao.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;

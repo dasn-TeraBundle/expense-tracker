@@ -1,47 +1,52 @@
 package com.innova.et.expenseservice.service.impl;
 
-import com.innova.et.expenseservice.beans.Payment;
-import com.innova.et.expenseservice.dao.repository.PaymentRepository;
+import com.innova.et.expenseservice.dao.PaymentDao;
 import com.innova.et.expenseservice.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.innova.et.expenseservice.dto.PaymentDto.*;
+
 @Service
 public class PaymentServiceImpl implements PaymentService {
 
-    @Autowired
-    private PaymentRepository paymentRepository;
+    private PaymentDao paymentDao;
 
-    @Override
-    public Payment create(Payment payment) {
-        return paymentRepository.save(payment);
+    @Autowired
+    public PaymentServiceImpl(PaymentDao paymentDao) {
+        this.paymentDao = paymentDao;
     }
 
     @Override
-    public Payment findById(String s) {
+    public PaymentDtoResponse create(PaymentDtoRequest payment) {
+        return convert(paymentDao.create(convert(payment)));
+    }
+
+    @Override
+    public PaymentDtoResponse findById(String s) {
         return null;
     }
 
     @Override
-    public List<Payment> findAll() {
+    public List<PaymentDtoResponse> findAll() {
 //        var sort = new Sort(Sort.Direction.ASC, Arrays.asList("date"));
-        return paymentRepository.findAll();
+        return convert(paymentDao.findAll());
     }
 
     @Override
-    public Payment update(String s, Payment item) {
+    public PaymentDtoResponse update(String s, PaymentDtoRequest item) {
         return null;
     }
 
     @Override
     public void remove(String id) {
-        paymentRepository.deleteById(id);
+        paymentDao.remove(id);
     }
 
     @Override
-    public void remove(Payment payment) {
+    public void remove(PaymentDtoRequest payment) {
 
     }
 

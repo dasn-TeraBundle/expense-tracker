@@ -1,7 +1,9 @@
 package com.innova.et.expenseservice.service;
 
 import com.innova.et.common.service.GenericService;
-import com.innova.et.expenseservice.beans.Expense;
 
-public interface ExpenseService extends GenericService<Expense, String> {
+import static com.innova.et.expenseservice.dto.ExpenseDto.ExpenseDtoRequest;
+import static com.innova.et.expenseservice.dto.ExpenseDto.ExpenseDtoResponse;
+
+public interface ExpenseService extends GenericService<ExpenseDtoRequest, ExpenseDtoResponse, String> {
 }

@@ -3,14 +3,20 @@ package com.innova.et.common.service;
 import java.io.Serializable;
 import java.util.List;
 
-public interface GenericService<T, ID extends Serializable> {
-    T create(T item);
+/**
+ *
+ * @param <T> Input type
+ * @param <R> Result type
+ * @param <ID> Primary key type of input
+ */
+public interface GenericService<T, R, ID extends Serializable> {
+    R create(T item);
 
-    T findById(ID id);
+    R findById(ID id);
 
-    List<T> findAll();
+    List<R> findAll();
 
-    T update(ID id, T item);
+    R update(ID id, T item);
 
     void remove(ID id);
 

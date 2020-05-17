@@ -1,25 +1,31 @@
 package com.innova.et.expenseservice.controller;
 
-import com.innova.et.expenseservice.beans.Payment;
 import com.innova.et.expenseservice.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.innova.et.expenseservice.dto.PaymentDto.PaymentDtoRequest;
+import static com.innova.et.expenseservice.dto.PaymentDto.PaymentDtoResponse;
+
 @RestController
 public class PaymentController {
 
-    @Autowired
     private PaymentService paymentService;
 
+    @Autowired
+    public PaymentController(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
     @PostMapping("/payment")
-    public Payment add(@RequestBody Payment payment) {
+    public PaymentDtoResponse add(@RequestBody PaymentDtoRequest payment) {
         return paymentService.create(payment);
     }
 
     @GetMapping("/payment")
-    public List<Payment> list() {
+    public List<PaymentDtoResponse> list() {
         return paymentService.findAll();
     }
 
