@@ -17,13 +17,13 @@ class CategoryServiceTests {
     void setup() {
         CategoryDto.CategoryDtoRequest request = new CategoryDto.CategoryDtoRequest();
         request.setCategoryName("Travel");
-        categoryService.create(CategoryDto.convert(request));
+        categoryService.create(request);
     }
 
     @Test
     void findAll() {
         Assertions.assertEquals(1, categoryService.findAll().size());
-        Assertions.assertEquals("Travel", categoryService.findAll().get(0).getName());
+        Assertions.assertEquals("Travel", categoryService.findAll().get(0).getCategoryName());
     }
 
     @Test

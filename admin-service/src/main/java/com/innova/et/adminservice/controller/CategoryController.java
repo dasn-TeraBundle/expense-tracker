@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-import static com.innova.et.adminservice.dto.CategoryDto.*;
+import static com.innova.et.adminservice.dto.CategoryDto.CategoryDtoRequest;
+import static com.innova.et.adminservice.dto.CategoryDto.CategoryDtoResponse;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -28,20 +29,33 @@ public class CategoryController {
     @ApiOperation(value = "List of categories")
     @GetMapping("/category")
     public List<CategoryDtoResponse> getAll() {
-        return convert(categoryService.findAll());
+        return categoryService.findAll();
     }
 
     @ApiOperation(value = "Get category by id")
     @GetMapping("/category/{id}")
     public CategoryDtoResponse getById(@PathVariable String id) {
-        return convert(categoryService.findById(id));
+        return categoryService.findById(id);
     }
 
     @ApiOperation(value = "Create new category", code = 201)
     @PostMapping("/category")
     @ResponseStatus(value = HttpStatus.CREATED)
     private EntityModel<CategoryDtoResponse> create(@RequestBody @Valid CategoryDtoRequest request) {
-        CategoryDtoResponse response = convert(categoryService.create(convert(request)));
+        CategoryDtoResponse response = categoryService.create(request);
+        var model = new EntityModel<>(response);
+
+        model.add(linkTo(methodOn(CategoryController.class).getById(response.getId())).withRel("get"));
+        model.add(linkTo(methodOn(CategoryController.class).getAll()).withRel("all"));
+
+        return model;
+    }
+
+    @ApiOperation(value = "Update category")
+    @PutMapping("/category/{id}")
+    private EntityModel<CategoryDtoResponse> update(@PathVariable String id,
+                                                    @RequestBody @Valid CategoryDtoRequest request) {
+        CategoryDtoResponse response = categoryService.update(id, request);
         var model = new EntityModel<>(response);
 
         model.add(linkTo(methodOn(CategoryController.class).getById(response.getId())).withRel("get"));

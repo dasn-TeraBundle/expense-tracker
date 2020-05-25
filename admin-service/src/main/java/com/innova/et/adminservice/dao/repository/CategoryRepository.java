@@ -1,4 +1,4 @@
-package com.innova.et.adminservice.repository;
+package com.innova.et.adminservice.dao.repository;
 
 import com.innova.et.adminservice.beans.Category;
 import org.springframework.data.mongodb.repository.MongoRepository;

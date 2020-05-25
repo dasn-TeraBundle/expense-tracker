@@ -1,49 +1,45 @@
 package com.innova.et.adminservice.service.impl;
 
-import com.innova.et.adminservice.beans.PaymentMode;
-import com.innova.et.adminservice.repository.PaymentModeRepository;
+import com.innova.et.adminservice.dao.PaymentModeDao;
 import com.innova.et.adminservice.service.PaymentModeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.innova.et.adminservice.dto.PaymentModeDto.*;
 
 @Service
 public class PaymentModeServiceImpl implements PaymentModeService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentModeServiceImpl.class);
 
-    private PaymentModeRepository paymentModeRepository;
+    private PaymentModeDao paymentModeDao;
 
     @Autowired
-    public PaymentModeServiceImpl(PaymentModeRepository paymentModeRepository) {
-        this.paymentModeRepository = paymentModeRepository;
+    public PaymentModeServiceImpl(PaymentModeDao paymentModeDao) {
+        this.paymentModeDao = paymentModeDao;
     }
 
     @Override
-    @CacheEvict(cacheNames = "payments", key = "'ALL_PAYMENTS'")
-    public PaymentMode create(PaymentMode item) {
-        return paymentModeRepository.insert(item);
+    public PaymentModeDtoResponse create(PaymentModeDtoRequest item) {
+        return convert(paymentModeDao.create(convert(item)));
     }
 
     @Override
-    public PaymentMode findById(String s) {
+    public PaymentModeDtoResponse findById(String s) {
         return null;
     }
 
     @Override
-    @Cacheable(cacheNames = "payments", key = "'ALL_PAYMENTS'")
-    public List<PaymentMode> findAll() {
-        LOGGER.info("Fetching from db");
-        return paymentModeRepository.findAll();
+    public List<PaymentModeDtoResponse> findAll() {
+        return convert(paymentModeDao.findAll());
     }
 
     @Override
-    public PaymentMode update(String s, PaymentMode item) {
+    public PaymentModeDtoResponse update(String s, PaymentModeDtoRequest item) {
         return null;
     }
 
@@ -53,13 +49,12 @@ public class PaymentModeServiceImpl implements PaymentModeService {
     }
 
     @Override
-    public void remove(PaymentMode item) {
+    public void remove(PaymentModeDtoRequest item) {
 
     }
 
     @Override
-    @CacheEvict(cacheNames = "payments", allEntries = true)
     public void remove() {
-        paymentModeRepository.deleteAll();
+        paymentModeDao.remove();
     }
 }

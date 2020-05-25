@@ -12,7 +12,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 import static com.innova.et.adminservice.dto.PaymentModeDto.PaymentModeDtoResponse;
-import static com.innova.et.adminservice.dto.PaymentModeDto.convert;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -28,13 +27,13 @@ public class PaymentController {
 
     @GetMapping("/payment")
     public List<PaymentModeDtoResponse> findAll() {
-        return convert(paymentModeService.findAll());
+        return paymentModeService.findAll();
     }
 
     @PostMapping("/payment")
     @ResponseStatus(HttpStatus.CREATED)
     public EntityModel<PaymentModeDtoResponse> create(@RequestBody @Valid PaymentModeDto.PaymentModeDtoRequest request) {
-        PaymentModeDtoResponse response = convert(paymentModeService.create(convert(request)));
+        PaymentModeDtoResponse response = paymentModeService.create(request);
         var model = new EntityModel<>(response);
 
         model.add(linkTo(methodOn(PaymentController.class).findAll()).withRel("all"));

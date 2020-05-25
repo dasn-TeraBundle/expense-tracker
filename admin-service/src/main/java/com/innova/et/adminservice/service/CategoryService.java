@@ -1,7 +1,10 @@
 package com.innova.et.adminservice.service;
 
-import com.innova.et.adminservice.beans.Category;
+import com.innova.et.common.service.GenericService;
 
-public interface CategoryService extends GenericService<Category, String> {
-    Category findByName(String name);
+import static com.innova.et.adminservice.dto.CategoryDto.CategoryDtoRequest;
+import static com.innova.et.adminservice.dto.CategoryDto.CategoryDtoResponse;
+
+public interface CategoryService extends GenericService<CategoryDtoRequest, CategoryDtoResponse, String> {
+    CategoryDtoResponse findByName(String name);
 }
