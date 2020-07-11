@@ -1,7 +1,7 @@
 # EXPENSE TRACKER
 
 ![Java CI with Maven](https://github.com/dasn-TeraBundle/expense-tracker/workflows/Java%20CI%20with%20Maven/badge.svg)
-![Docker Image CI](https://github.com/dasn-TeraBundle/expense-tracker/workflows/Docker%20Image%20CI/badge.svg)
+![Docker Image CI](https://github.com/dasn-TeraBundle/expense-tracker/workflows/Docker%20Image%20CI/badge.svg)                                                                 
 
 ## DESCRIPTION
 This application can be used to track all expenses. Entire application is built using microservice architecture. 
