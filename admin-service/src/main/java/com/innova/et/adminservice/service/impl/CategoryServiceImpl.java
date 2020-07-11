@@ -46,6 +46,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public List<CategoryDtoResponse> findAllById_Name() {
+        return convert(categoryDao.findAllById_Name());
+    }
+
+    @Override
     public CategoryDtoResponse update(String id, CategoryDtoRequest item) {
         Category category = categoryDao.findById(id);
         if (category == null) {

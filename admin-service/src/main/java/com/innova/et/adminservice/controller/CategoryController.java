@@ -19,7 +19,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 public class CategoryController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @Autowired
     public CategoryController(CategoryService categoryService) {
@@ -30,6 +30,12 @@ public class CategoryController {
     @GetMapping("/category")
     public List<CategoryDtoResponse> getAll() {
         return categoryService.findAll();
+    }
+
+    @ApiOperation(value = "List of categories with names projection only")
+    @GetMapping("/category_name")
+    public List<CategoryDtoResponse> getAll_NamesOnly() {
+        return categoryService.findAllById_Name();
     }
 
     @ApiOperation(value = "Get category by id")

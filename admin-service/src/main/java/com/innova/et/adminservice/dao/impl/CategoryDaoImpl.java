@@ -13,13 +13,14 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class CategoryDaoImpl implements CategoryDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CategoryDaoImpl.class);
 
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
     @Autowired
     public CategoryDaoImpl(CategoryRepository categoryRepository) {
@@ -27,7 +28,10 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES'")
+    @Caching(evict = {
+            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES'"),
+            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES2'")
+    })
     public Category create(Category category) {
         return categoryRepository.insert(category);
     }
@@ -47,6 +51,11 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
+    public Category findById_Name(String id) {
+        throw new UnsupportedOperationException("Operation not supported currently");
+    }
+
+    @Override
     @Cacheable(cacheNames = "categories", key = "'ALL_CATEGORIES'")
     public List<Category> findAll() {
         LOGGER.info("Fetching data from db");
@@ -54,11 +63,19 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
+    @Cacheable(cacheNames = "categories", key = "'ALL_CATEGORIES2'")
+    public List<Category> findAllById_Name() {
+        LOGGER.info("Fetching data from db");
+        return categoryRepository.findAllById_Name().collect(Collectors.toList());
+    }
+
+    @Override
     @Caching(put = {
             @CachePut(cacheNames = "categories", key = "#id"),
             @CachePut(cacheNames = "categories", key = "#item.name")
     }, evict = {
-            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES'")
+            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES'"),
+            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES2'")
     })
     public Category update(String id, Category item) {
         return categoryRepository.save(item);
@@ -77,7 +94,8 @@ public class CategoryDaoImpl implements CategoryDao {
     @Caching(evict = {
             @CacheEvict(cacheNames = "categories", key = "#item.id"),
             @CacheEvict(cacheNames = "categories", key = "#item.name"),
-            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES'")
+            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES'"),
+            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES2'")
     })
     public void remove(Category item) {
         categoryRepository.delete(item);
