@@ -3,14 +3,14 @@ package com.innova.et.adminservice.service.impl;
 
 import com.innova.et.adminservice.beans.Merchant;
 import com.innova.et.adminservice.dao.MerchantDao;
-import static com.innova.et.adminservice.dto.MerchantDto.*;
-
 import com.innova.et.adminservice.exception.MerchantNotFoundException;
 import com.innova.et.adminservice.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.innova.et.adminservice.dto.MerchantDto.*;
 
 @Service
 public class MerchantServiceImpl implements MerchantService {
@@ -49,16 +49,16 @@ public class MerchantServiceImpl implements MerchantService {
 
     @Override
     public void remove(String s) {
-
+        merchantDao.remove(s);
     }
 
     @Override
     public void remove(MerchantDtoRequest item) {
-
+        merchantDao.remove(convert(item));
     }
 
     @Override
     public void remove() {
-
+        merchantDao.remove();
     }
 }

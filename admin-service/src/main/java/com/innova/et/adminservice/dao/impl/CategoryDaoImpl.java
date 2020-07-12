@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public class CategoryDaoImpl implements CategoryDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CategoryDaoImpl.class);
+    private static final String FETCHING_DATA_FROM_DB = "Fetching data from db";
 
     private final CategoryRepository categoryRepository;
 
@@ -39,14 +40,14 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     @Cacheable(cacheNames = "categories", key = "#name")
     public Category findByName(String name) {
-        LOGGER.info("Fetching data from db");
+        LOGGER.info(FETCHING_DATA_FROM_DB);
         return categoryRepository.findByName(name);
     }
 
     @Override
     @Cacheable(cacheNames = "categories", key = "#id")
     public Category findById(String id) {
-        LOGGER.info("Fetching data from db");
+        LOGGER.info(FETCHING_DATA_FROM_DB);
         return categoryRepository.findById(id).orElse(null);
     }
 
@@ -58,14 +59,14 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     @Cacheable(cacheNames = "categories", key = "'ALL_CATEGORIES'")
     public List<Category> findAll() {
-        LOGGER.info("Fetching data from db");
+        LOGGER.info(FETCHING_DATA_FROM_DB);
         return categoryRepository.findAll();
     }
 
     @Override
     @Cacheable(cacheNames = "categories", key = "'ALL_CATEGORIES2'")
     public List<Category> findAllById_Name() {
-        LOGGER.info("Fetching data from db");
+        LOGGER.info(FETCHING_DATA_FROM_DB);
         return categoryRepository.findAllById_Name().collect(Collectors.toList());
     }
 
@@ -82,12 +83,8 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-//    @Caching(evict = {
-////            @CacheEvict(cacheNames = "categories", key = "#id"),
-////            @CacheEvict(cacheNames = "categories", key = "'ALL_CATEGORIES'")
-////    })
     public void remove(String id) {
-//        categoryRepository.deleteById(id);
+        throw new UnsupportedOperationException("This operation currently not supported");
     }
 
     @Override

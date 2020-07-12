@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 
 public class PaymentModeDto {
 
+    private PaymentModeDto() { }
+
     public static PaymentMode convert(PaymentModeDtoRequest request) {
         return new PaymentMode(request.getPaymentMode());
     }

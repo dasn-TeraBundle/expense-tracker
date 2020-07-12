@@ -4,9 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *
- * @param <T> Input type
- * @param <R> Result type
+ * @param <T>  Input type
+ * @param <R>  Result type
  * @param <ID> Primary key type of input
  */
 public interface GenericService<T, R, ID extends Serializable> {

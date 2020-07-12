@@ -47,7 +47,7 @@ public class CategoryController {
     @ApiOperation(value = "Create new category", code = 201)
     @PostMapping("/category")
     @ResponseStatus(value = HttpStatus.CREATED)
-    private EntityModel<CategoryDtoResponse> create(@RequestBody @Valid CategoryDtoRequest request) {
+    public EntityModel<CategoryDtoResponse> create(@RequestBody @Valid CategoryDtoRequest request) {
         CategoryDtoResponse response = categoryService.create(request);
         var model = new EntityModel<>(response);
 
@@ -59,7 +59,7 @@ public class CategoryController {
 
     @ApiOperation(value = "Update category")
     @PutMapping("/category/{id}")
-    private EntityModel<CategoryDtoResponse> update(@PathVariable String id,
+    public EntityModel<CategoryDtoResponse> update(@PathVariable String id,
                                                     @RequestBody @Valid CategoryDtoRequest request) {
         CategoryDtoResponse response = categoryService.update(id, request);
         var model = new EntityModel<>(response);
@@ -71,7 +71,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/category/{id}")
-    private void delete(@PathVariable String id) {
+    public void delete(@PathVariable String id) {
         categoryService.remove(id);
     }
 }

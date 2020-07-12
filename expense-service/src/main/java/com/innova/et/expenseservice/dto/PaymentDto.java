@@ -1,7 +1,6 @@
 package com.innova.et.expenseservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.innova.et.expenseservice.beans.Payment;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PaymentDto {
+
+    private PaymentDto() { }
 
     public static Payment convert(PaymentDtoRequest req) {
         var payment = new Payment();

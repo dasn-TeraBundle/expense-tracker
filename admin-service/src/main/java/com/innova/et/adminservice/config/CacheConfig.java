@@ -8,22 +8,22 @@ import org.springframework.cache.jcache.JCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-//import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
+
+import java.io.IOException;
 
 @Configuration
 @EnableCaching
 public class CacheConfig {
 
     @Bean
-    public CacheManager cacheManager() throws Exception {
+    public CacheManager cacheManager() throws IOException {
         return new JCacheCacheManager(ehCacheCacheManager().getObject());
     }
 
     @Bean
-    public JCacheManagerFactoryBean ehCacheCacheManager() throws Exception {
+    public JCacheManagerFactoryBean ehCacheCacheManager() throws IOException {
         JCacheManagerFactoryBean cmfb = new JCacheManagerFactoryBean();
         cmfb.setCacheManagerUri(new ClassPathResource("ehcache.xml").getURI());
-//        cmfb.setShared(true);
         return cmfb;
     }
 }

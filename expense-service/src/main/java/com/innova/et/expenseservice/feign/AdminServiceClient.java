@@ -19,4 +19,5 @@ public interface AdminServiceClient {
     MerchantDto.MerchantDtoResponse getMerchantById(@PathVariable String id);
 
     @GetMapping("/merchant")
-    List<MerchantDto.MerchantDtoResponse> getAllMerchant();}
+    List<MerchantDto.MerchantDtoResponse> getAllMerchant();
+}

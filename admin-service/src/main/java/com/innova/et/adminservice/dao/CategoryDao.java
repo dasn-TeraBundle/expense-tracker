@@ -8,6 +8,8 @@ import java.util.List;
 public interface CategoryDao extends GenericDao<Category, String> {
 
     Category findById_Name(String id);
+
     Category findByName(String name);
+
     List<Category> findAllById_Name();
 }

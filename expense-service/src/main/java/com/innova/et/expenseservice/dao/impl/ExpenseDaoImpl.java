@@ -49,11 +49,13 @@ public class ExpenseDaoImpl implements ExpenseDao {
     }
 
     @Override
+    @CacheEvict(cacheNames = "expenses", allEntries = true)
     public void remove(Expense item) {
-
+        expenseRepository.delete(item);
     }
 
     @Override
+    @CacheEvict(cacheNames = "expenses", allEntries = true)
     public void remove() {
         expenseRepository.deleteAll();
     }

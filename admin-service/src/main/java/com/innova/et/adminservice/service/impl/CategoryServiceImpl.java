@@ -27,6 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDtoResponse create(CategoryDtoRequest category) {
+        LOGGER.debug("Creating new category");
         return convert(categoryDao.create(convert(category)));
     }
 

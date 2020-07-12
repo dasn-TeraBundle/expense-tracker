@@ -64,11 +64,11 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void remove(PaymentDtoRequest payment) {
-
+        paymentDao.remove(convert(payment));
     }
 
     @Override
     public void remove() {
-
+        paymentDao.remove();
     }
 }

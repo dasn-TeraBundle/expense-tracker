@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 
 public class CategoryDto {
 
+    private CategoryDto() { }
+
     public static Category convert(CategoryDtoRequest request) {
         var category = new Category(request.getCategoryName());
         category.setChildren(request.getSubCategories());

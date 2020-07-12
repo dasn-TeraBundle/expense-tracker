@@ -1,6 +1,5 @@
 package com.innova.et.adminservice.dto;
 
-//import com.innova.et.adminservice.beans.PaymentMode;
 import com.innova.et.adminservice.beans.Merchant;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +10,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class MerchantDto {
+
+    private MerchantDto() { }
 
     public static Merchant convert(MerchantDtoRequest request) {
         return new Merchant(request.getName(), request.getAcceptedPaymentModes());

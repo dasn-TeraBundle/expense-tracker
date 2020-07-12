@@ -1,13 +1,15 @@
 package com.innova.et.adminservice.controller;
 
 
-import static com.innova.et.adminservice.dto.MerchantDto.*;
 import com.innova.et.adminservice.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
+import static com.innova.et.adminservice.dto.MerchantDto.MerchantDtoRequest;
+import static com.innova.et.adminservice.dto.MerchantDto.MerchantDtoResponse;
 
 @RestController
 public class MerchantController {

@@ -1,9 +1,7 @@
 package com.innova.et.adminservice.dao.impl;
 
-import com.innova.et.adminservice.beans.Category;
 import com.innova.et.adminservice.beans.Merchant;
 import com.innova.et.adminservice.dao.MerchantDao;
-import com.innova.et.adminservice.dao.repository.CategoryRepository;
 import com.innova.et.adminservice.dao.repository.MerchantRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,12 +58,8 @@ public class MerchantDaoImpl implements MerchantDao {
     }
 
     @Override
-//    @Caching(evict = {
-////            @CacheEvict(cacheNames = "merchants", key = "#id"),
-////            @CacheEvict(cacheNames = "merchants", key = "'ALL_MERCHANTS'")
-////    })
     public void remove(String id) {
-//        categoryRepository.deleteById(id);
+        throw new UnsupportedOperationException("This operation currently not supported");
     }
 
     @Override

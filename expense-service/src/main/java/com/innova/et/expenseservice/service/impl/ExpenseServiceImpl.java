@@ -47,7 +47,6 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<ExpenseDtoResponse> findAll() {
-//        new Sort(Sort.Direction.ASC, Arrays.asList("date"))
         return convert(expenseDao.findAll());
     }
 
@@ -63,7 +62,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public void remove(ExpenseDtoRequest item) {
-
+        expenseDao.remove(convert(item));
     }
 
     @Override

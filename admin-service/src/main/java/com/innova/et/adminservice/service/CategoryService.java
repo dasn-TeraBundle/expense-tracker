@@ -9,5 +9,6 @@ import static com.innova.et.adminservice.dto.CategoryDto.CategoryDtoResponse;
 
 public interface CategoryService extends GenericService<CategoryDtoRequest, CategoryDtoResponse, String> {
     CategoryDtoResponse findByName(String name);
-    List<CategoryDtoResponse>  findAllById_Name();
+
+    List<CategoryDtoResponse> findAllById_Name();
 }

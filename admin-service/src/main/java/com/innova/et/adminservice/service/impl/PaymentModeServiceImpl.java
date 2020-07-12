@@ -16,7 +16,7 @@ public class PaymentModeServiceImpl implements PaymentModeService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentModeServiceImpl.class);
 
-    private PaymentModeDao paymentModeDao;
+    private final PaymentModeDao paymentModeDao;
 
     @Autowired
     public PaymentModeServiceImpl(PaymentModeDao paymentModeDao) {
@@ -25,6 +25,7 @@ public class PaymentModeServiceImpl implements PaymentModeService {
 
     @Override
     public PaymentModeDtoResponse create(PaymentModeDtoRequest item) {
+        LOGGER.debug("Creating new payment mode");
         return convert(paymentModeDao.create(convert(item)));
     }
 
@@ -45,12 +46,12 @@ public class PaymentModeServiceImpl implements PaymentModeService {
 
     @Override
     public void remove(String s) {
-
+        paymentModeDao.remove(s);
     }
 
     @Override
     public void remove(PaymentModeDtoRequest item) {
-
+        paymentModeDao.remove(convert(item));
     }
 
     @Override
