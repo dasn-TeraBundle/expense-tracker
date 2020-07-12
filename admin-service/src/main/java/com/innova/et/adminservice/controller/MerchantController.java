@@ -4,10 +4,7 @@ package com.innova.et.adminservice.controller;
 import static com.innova.et.adminservice.dto.MerchantDto.*;
 import com.innova.et.adminservice.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -22,13 +19,20 @@ public class MerchantController {
         this.merchantService = merchantService;
     }
 
+    @PostMapping("/merchant")
+    public MerchantDtoResponse create(@RequestBody @Valid MerchantDtoRequest request) {
+        return merchantService.create(request);
+    }
+
+    @GetMapping("/merchant/{id}")
+    public MerchantDtoResponse findById(@PathVariable String id) {
+        return merchantService.findById(id);
+    }
+
     @GetMapping("/merchant")
     public List<MerchantDtoResponse> findAll() {
         return merchantService.findAll();
     }
 
-    @PostMapping("/merchant")
-    public MerchantDtoResponse create(@RequestBody @Valid MerchantDtoRequest request) {
-        return merchantService.create(request);
-    }
+
 }
