@@ -28,7 +28,7 @@ public class CategoryDto {
     public static class CategoryDtoResponse extends CategoryDtoRequest {
         private String id;
 
-        CategoryDtoResponse() {
+        public CategoryDtoResponse() {
             this.setSubCategories(new HashSet<>());
         }
     }

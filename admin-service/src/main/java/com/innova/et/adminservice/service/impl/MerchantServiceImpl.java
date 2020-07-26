@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.innova.et.adminservice.dto.MerchantDto.*;
+import static com.innova.et.adminservice.dto.MerchantDto.convert;
+import static com.innova.et.common.dto.MerchantDto.MerchantDtoRequest;
+import static com.innova.et.common.dto.MerchantDto.MerchantDtoResponse;
 
 @Service
 public class MerchantServiceImpl implements MerchantService {

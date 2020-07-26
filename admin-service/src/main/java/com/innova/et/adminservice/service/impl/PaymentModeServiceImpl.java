@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.innova.et.adminservice.dto.PaymentModeDto.*;
+import static com.innova.et.adminservice.dto.PaymentModeDto.convert;
+import static com.innova.et.common.dto.PaymentModeDto.PaymentModeDtoRequest;
+import static com.innova.et.common.dto.PaymentModeDto.PaymentModeDtoResponse;
 
 @Service
 public class PaymentModeServiceImpl implements PaymentModeService {

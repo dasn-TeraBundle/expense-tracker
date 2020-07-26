@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-import static com.innova.et.adminservice.dto.CategoryDto.CategoryDtoRequest;
-import static com.innova.et.adminservice.dto.CategoryDto.CategoryDtoResponse;
+import static com.innova.et.common.dto.CategoryDto.CategoryDtoRequest;
+import static com.innova.et.common.dto.CategoryDto.CategoryDtoResponse;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 

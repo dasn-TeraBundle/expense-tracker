@@ -1,17 +1,17 @@
 package com.innova.et.adminservice.dto;
 
 import com.innova.et.adminservice.beans.Merchant;
-import lombok.Getter;
-import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.innova.et.common.dto.MerchantDto.MerchantDtoRequest;
+import static com.innova.et.common.dto.MerchantDto.MerchantDtoResponse;
 
 public class MerchantDto {
 
-    private MerchantDto() { }
+    private MerchantDto() {
+    }
 
     public static Merchant convert(MerchantDtoRequest request) {
         return new Merchant(request.getName(), request.getAcceptedPaymentModes());
@@ -30,20 +30,5 @@ public class MerchantDto {
                 .stream()
                 .map(MerchantDto::convert)
                 .collect(Collectors.toList());
-    }
-
-    @Getter
-    @Setter
-    public static class MerchantDtoRequest {
-        @NotNull
-        private String name;
-        @NotNull
-        private Set<String> acceptedPaymentModes;
-    }
-
-    @Getter
-    @Setter
-    public static class MerchantDtoResponse extends MerchantDtoRequest {
-        private String id;
     }
 }

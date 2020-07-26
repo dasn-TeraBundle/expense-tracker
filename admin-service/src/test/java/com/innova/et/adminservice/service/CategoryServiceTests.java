@@ -1,6 +1,6 @@
 package com.innova.et.adminservice.service;
 
-import com.innova.et.adminservice.dto.CategoryDto;
+import com.innova.et.common.dto.CategoryDto;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
