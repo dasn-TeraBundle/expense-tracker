@@ -1,5 +1,6 @@
-package com.innova.et.adminservice.service;
+package com.innova.et.adminservice.qa.service;
 
+import com.innova.et.adminservice.service.CategoryService;
 import com.innova.et.common.dto.CategoryDto;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ class CategoryServiceTests {
     }
 
     @Test
-    @Timeout(value = 5, unit = TimeUnit.MILLISECONDS)
+    @Timeout(value = 1)
     void findAll_time() {
         categoryService.findAll();
     }
