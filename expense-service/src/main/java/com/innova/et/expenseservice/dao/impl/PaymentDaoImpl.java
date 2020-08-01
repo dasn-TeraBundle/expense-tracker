@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class PaymentDaoImpl implements PaymentDao {
 
-    private PaymentRepository paymentRepository;
+    private final PaymentRepository paymentRepository;
 
     @Autowired
     public PaymentDaoImpl(PaymentRepository paymentRepository) {
@@ -45,7 +45,7 @@ public class PaymentDaoImpl implements PaymentDao {
 
     @Override
     public void remove(Payment item) {
-
+        paymentRepository.delete(item);
     }
 
     @Override

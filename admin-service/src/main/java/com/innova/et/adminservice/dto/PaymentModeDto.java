@@ -1,14 +1,17 @@
 package com.innova.et.adminservice.dto;
 
 import com.innova.et.adminservice.beans.PaymentMode;
-import lombok.Getter;
-import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.innova.et.common.dto.PaymentModeDto.PaymentModeDtoRequest;
+import static com.innova.et.common.dto.PaymentModeDto.PaymentModeDtoResponse;
+
 public class PaymentModeDto {
+
+    private PaymentModeDto() {
+    }
 
     public static PaymentMode convert(PaymentModeDtoRequest request) {
         return new PaymentMode(request.getPaymentMode());
@@ -25,15 +28,5 @@ public class PaymentModeDto {
                 .stream()
                 .map(PaymentModeDto::convert)
                 .collect(Collectors.toList());
-    }
-
-    @Getter
-    @Setter
-    public static class PaymentModeDtoRequest {
-        @NotNull
-        private String paymentMode;
-    }
-
-    public static class PaymentModeDtoResponse extends PaymentModeDtoRequest {
     }
 }

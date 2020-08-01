@@ -49,12 +49,12 @@ public class PaymentModeDaoImpl implements PaymentModeDao {
 
     @Override
     public void remove(String s) {
-
+        throw new UnsupportedOperationException("This operation currently not supported");
     }
 
     @Override
     public void remove(PaymentMode item) {
-
+        throw new UnsupportedOperationException("This operation currently not supported");
     }
 
     @Override

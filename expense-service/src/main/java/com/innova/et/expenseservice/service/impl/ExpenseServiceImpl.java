@@ -2,7 +2,7 @@ package com.innova.et.expenseservice.service.impl;
 
 import com.innova.et.expenseservice.dao.ExpenseDao;
 import com.innova.et.expenseservice.exception.InvalidDataException;
-import com.innova.et.expenseservice.feign.CategoryClient;
+import com.innova.et.expenseservice.feign.AdminServiceClient;
 import com.innova.et.expenseservice.service.ExpenseService;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +17,18 @@ import static com.innova.et.expenseservice.dto.ExpenseDto.*;
 public class ExpenseServiceImpl implements ExpenseService {
 
     private final ExpenseDao expenseDao;
-    private final CategoryClient categoryClient;
+    private final AdminServiceClient adminServiceClient;
 
     @Autowired
-    public ExpenseServiceImpl(ExpenseDao expenseDao, CategoryClient categoryClient) {
+    public ExpenseServiceImpl(ExpenseDao expenseDao, AdminServiceClient adminServiceClient) {
         this.expenseDao = expenseDao;
-        this.categoryClient = categoryClient;
+        this.adminServiceClient = adminServiceClient;
     }
 
     @Override
     public ExpenseDtoResponse create(ExpenseDtoRequest expense) {
         try {
-            CategoryDtoResponse dtoResponse = categoryClient.getById(expense.getCategory());
+            CategoryDtoResponse dtoResponse = adminServiceClient.getCategoryById(expense.getCategory());
             if (!dtoResponse.getSubCategories().contains(expense.getSubCategory())) {
                 throw new InvalidDataException("Invalid subcategory for given category");
             }
@@ -47,7 +47,6 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<ExpenseDtoResponse> findAll() {
-//        new Sort(Sort.Direction.ASC, Arrays.asList("date"))
         return convert(expenseDao.findAll());
     }
 
@@ -63,7 +62,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public void remove(ExpenseDtoRequest item) {
-
+        expenseDao.remove(convert(item));
     }
 
     @Override

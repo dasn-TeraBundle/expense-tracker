@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 
 public class ExpenseDto {
 
+    private ExpenseDto() { }
+
     public static Expense convert(ExpenseDtoRequest req) {
         var expense = new Expense(req.getPurchaseDate(), req.getCategory(),
                 req.getQuantity(), req.getAmount(), req.getMerchant());

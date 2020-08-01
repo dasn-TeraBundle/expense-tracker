@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.innova.et.adminservice.dto.CategoryDto.*;
+import static com.innova.et.adminservice.dto.CategoryDto.convert;
+import static com.innova.et.common.dto.CategoryDto.CategoryDtoRequest;
+import static com.innova.et.common.dto.CategoryDto.CategoryDtoResponse;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -27,6 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDtoResponse create(CategoryDtoRequest category) {
+        LOGGER.debug("Creating new category");
         return convert(categoryDao.create(convert(category)));
     }
 

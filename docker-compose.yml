@@ -4,7 +4,7 @@ services:
     image: mongo
     container_name: mongo
     ports:
-    - "27017:27017"
+      - "27017:27017"
 
   eureka:
     image: eureka
@@ -16,7 +16,7 @@ services:
     image: config-server
     container_name: config-server
     ports:
-    - "8888:8888"
+      - "8888:8888"
 
   admin-service:
     image: admin-service
@@ -26,7 +26,7 @@ services:
       - PROFILE=docker
       - CONFIG_URI=http://config-server:8888
     ports:
-    - "8001:8001"
+      - "8001:8001"
     depends_on:
       - eureka
       - mongo
@@ -36,11 +36,11 @@ services:
     container_name: expense-service
     restart: on-failure
     environment:
-    - PROFILE=docker
-    - CONFIG_URI=http://config-server:8888
+      - PROFILE=docker
+      - CONFIG_URI=http://config-server:8888
     ports:
-    - "8011:8011"
+      - "8011:8011"
     depends_on:
-    - eureka
-    - mongo
-    - admin-service
+      - eureka
+      - mongo
+      - admin-service

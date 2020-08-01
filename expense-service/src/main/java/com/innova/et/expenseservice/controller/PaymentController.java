@@ -4,6 +4,7 @@ import com.innova.et.expenseservice.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static com.innova.et.expenseservice.dto.PaymentDto.PaymentDtoRequest;
@@ -12,7 +13,7 @@ import static com.innova.et.expenseservice.dto.PaymentDto.PaymentDtoResponse;
 @RestController
 public class PaymentController {
 
-    private PaymentService paymentService;
+    private final PaymentService paymentService;
 
     @Autowired
     public PaymentController(PaymentService paymentService) {
@@ -20,7 +21,7 @@ public class PaymentController {
     }
 
     @PostMapping("/payment")
-    public PaymentDtoResponse add(@RequestBody PaymentDtoRequest payment) {
+    public PaymentDtoResponse add(@RequestBody @Valid PaymentDtoRequest payment) {
         return paymentService.create(payment);
     }
 

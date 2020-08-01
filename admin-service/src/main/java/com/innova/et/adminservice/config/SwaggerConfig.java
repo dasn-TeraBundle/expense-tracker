@@ -13,13 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Profile({"default", "dev"})
 public class SwaggerConfig {
 
-//    @Bean
-//    public LinkDiscoverers discovers() {
-//        List<LinkDiscoverer> plugins = new ArrayList<>();
-//        plugins.add(new CollectionJsonLinkDiscoverer());
-//        return new LinkDiscoverers(SimplePluginRegistry.create(plugins));
-//    }
-
     @Bean
     Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)

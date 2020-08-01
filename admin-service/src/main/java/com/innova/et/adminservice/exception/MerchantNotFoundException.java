@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class MerchantNotFoundException extends RuntimeException {
 
     public MerchantNotFoundException() {
-        super("Category does not exist");
+        super("Merchant does not exist");
     }
 }
