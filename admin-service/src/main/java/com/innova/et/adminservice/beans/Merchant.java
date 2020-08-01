@@ -22,4 +22,22 @@ public class Merchant implements Serializable {
         this.name = name;
         this.paymentModes = paymentModes;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Merchant merchant = (Merchant) o;
+
+        if (id != null ? !id.equals(merchant.id) : merchant.id != null) return false;
+        return name.equals(merchant.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + name.hashCode();
+        return result;
+    }
 }

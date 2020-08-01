@@ -1,7 +1,13 @@
-# EXPENSE TRACKER
+# EXPENSE TRACKER 
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
 
 ![Java CI with Maven](https://github.com/dasn-TeraBundle/expense-tracker/workflows/Java%20CI%20with%20Maven/badge.svg)
-![Docker Image CI](https://github.com/dasn-TeraBundle/expense-tracker/workflows/Docker%20Image%20CI/badge.svg)                                                                 
+![Docker Image CI](https://github.com/dasn-TeraBundle/expense-tracker/workflows/Docker%20Image%20CI/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=alert_status)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=bugs)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
+                                                              
 
 ## DESCRIPTION
 This application can be used to track all expenses. Entire application is built using microservice architecture. 

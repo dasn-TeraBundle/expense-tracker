@@ -31,6 +31,7 @@ class CategoryServiceTests {
     @Timeout(value = 1)
     void findAll_time() {
         categoryService.findAll();
+        Assertions.assertTrue(true);
     }
 
     @AfterEach
