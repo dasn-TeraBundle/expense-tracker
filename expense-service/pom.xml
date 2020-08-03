@@ -84,6 +84,7 @@
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -106,5 +107,31 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dbTest</id>
+            <activation>
+                <property>
+                    <name>dbTest</name>
+                    <value>true</value>
+                </property>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>de.flapdoodle.embed</groupId>
+                    <artifactId>de.flapdoodle.embed.mongo</artifactId>
+                    <version>2.2.0</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>cz.jirutka.spring</groupId>
+                    <artifactId>embedmongo-spring</artifactId>
+                    <version>RELEASE</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
 </project>

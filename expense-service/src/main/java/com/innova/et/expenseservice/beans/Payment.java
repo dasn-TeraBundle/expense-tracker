@@ -22,6 +22,14 @@ public class Payment implements Serializable {
     private String referenceNo;
     private String paymentBy;
 
+    public Payment(Date date, String merchant, float amount, String paymentMode, String paymentBy) {
+        this.date = date;
+        this.merchant = merchant;
+        this.amount = amount;
+        this.paymentMode = paymentMode;
+        this.paymentBy = paymentBy;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
