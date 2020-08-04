@@ -20,7 +20,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class CategoryServiceTests {
+class CategoryServiceTests {
 
     @InjectMocks
     private CategoryServiceImpl categoryService;
@@ -29,13 +29,12 @@ public class CategoryServiceTests {
 
     @Test
     void create() {
-        CategoryDto.CategoryDtoRequest request = new CategoryDto.CategoryDtoRequest();
+        var request = new CategoryDto.CategoryDtoRequest();
         request.setCategoryName("Travel");
         Category categoryR = convert(request);
-        Category category = mock(Category.class);
+        var category = mock(Category.class);
 
         when(categoryDao.create(categoryR)).thenReturn(category);
-//        when(categoryRepository.insert(categoryR)).thenReturn(category);
         when(category.getId()).thenReturn("00000000000000");
         when(category.getName()).thenReturn("Travel");
 
@@ -48,7 +47,7 @@ public class CategoryServiceTests {
 
     @Test
     void findByName() {
-        Category category = mock(Category.class);
+        var category = mock(Category.class);
 
         when(categoryDao.findByName("Travel")).thenReturn(category);
         when(category.getId()).thenReturn("00000000000000");
@@ -70,7 +69,7 @@ public class CategoryServiceTests {
 
     @Test
     void findById() {
-        Category category = mock(Category.class);
+        var category = mock(Category.class);
 
         when(categoryDao.findById("00000000000000")).thenReturn(category);
         when(category.getId()).thenReturn("00000000000000");
@@ -104,17 +103,14 @@ public class CategoryServiceTests {
 
     @Test
     void update() {
-        CategoryDto.CategoryDtoRequest request = new CategoryDto.CategoryDtoRequest();
+        var request = new CategoryDto.CategoryDtoRequest();
         request.setCategoryName("Travel");
         List<String> c = Arrays.asList("Bus", "Cab");
         Set<String> children = new HashSet<>(c);
         request.setSubCategories(children);
-        Category category = new Category("Travel");//mock(Category.class);
+        var category = new Category("Travel");//mock(Category.class);
 
         when(categoryDao.findById("00000000000000")).thenReturn(category);
-//        when(category.getId()).thenReturn("00000000000000");
-//        when(category.getName()).thenReturn("Travel");
-//        when(category.getChildren()).thenReturn(children);
         when(categoryDao.update("00000000000000", category)).thenReturn(category);
 
         CategoryDto.CategoryDtoResponse response = categoryService.update("00000000000000", request);
@@ -125,7 +121,7 @@ public class CategoryServiceTests {
 
     @Test
     void update_Exception() {
-        CategoryDto.CategoryDtoRequest request = new CategoryDto.CategoryDtoRequest();
+        var request = new CategoryDto.CategoryDtoRequest();
         request.setCategoryName("Travel");
         List<String> c = Arrays.asList("Bus", "Cab");
         Set<String> children = new HashSet<>(c);
@@ -138,11 +134,13 @@ public class CategoryServiceTests {
 
     @Test
     void remove() {
-        Category category = mock(Category.class);
+        var category = mock(Category.class);
 
         when(categoryDao.findById("00000000000000")).thenReturn(category);
 
         categoryService.remove("00000000000000");
+        categoryService.remove(new CategoryDto.CategoryDtoRequest());
+        categoryService.remove();
         assertTrue(true);
     }
 

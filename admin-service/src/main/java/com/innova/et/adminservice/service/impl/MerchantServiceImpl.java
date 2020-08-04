@@ -51,12 +51,17 @@ public class MerchantServiceImpl implements MerchantService {
 
     @Override
     public void remove(String s) {
-        merchantDao.remove(s);
+        Merchant merchant = merchantDao.findById(s);
+        if (merchant == null) {
+            throw new MerchantNotFoundException();
+        }
+
+        merchantDao.remove(merchant);
     }
 
     @Override
     public void remove(MerchantDtoRequest item) {
-        merchantDao.remove(convert(item));
+        throw new UnsupportedOperationException("This operation currently not supported");
     }
 
     @Override
