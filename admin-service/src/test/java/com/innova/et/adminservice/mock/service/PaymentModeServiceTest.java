@@ -8,14 +8,15 @@ import com.innova.et.common.dto.PaymentModeDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-
-import static com.innova.et.adminservice.dto.PaymentModeDto.convert;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+
+import static com.innova.et.adminservice.dto.PaymentModeDto.convert;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class PaymentModeServiceTest {

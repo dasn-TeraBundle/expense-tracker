@@ -7,6 +7,10 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=alert_status)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=bugs)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=security_rating)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=dasn-TeraBundle_et-app&metric=coverage)](https://sonarcloud.io/dashboard?id=dasn-TeraBundle_et-app)
                                                               
 
 ## DESCRIPTION
