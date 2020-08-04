@@ -20,4 +20,5 @@ jobs:
     - name: Scan with SonarCloud
       run: mvn -B verify sonar:sonar --file pom.xml
       env:
-        SONAR_TOKEN: f95b8f82d8cd2bf9edba9a495c3f3d990e395404
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
